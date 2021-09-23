@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\annes\\OneDrive\\cours\\Master 2\\jeu-dijkstra\\dijkstra.csproj": {}
+    "C:\\Users\\akoch2\\Desktop\\systèmes complexes\\ConsoleApp1\\dijkstra.csproj": {}
   },
   "projects": {
-    "C:\\Users\\annes\\OneDrive\\cours\\Master 2\\jeu-dijkstra\\dijkstra.csproj": {
+    "C:\\Users\\akoch2\\Desktop\\systèmes complexes\\ConsoleApp1\\dijkstra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\annes\\OneDrive\\cours\\Master 2\\jeu-dijkstra\\dijkstra.csproj",
+        "projectUniqueName": "C:\\Users\\akoch2\\Desktop\\systèmes complexes\\ConsoleApp1\\dijkstra.csproj",
         "projectName": "dijkstra",
-        "projectPath": "C:\\Users\\annes\\OneDrive\\cours\\Master 2\\jeu-dijkstra\\dijkstra.csproj",
-        "packagesPath": "C:\\Users\\annes\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\annes\\OneDrive\\cours\\Master 2\\jeu-dijkstra\\obj\\",
+        "projectPath": "C:\\Users\\akoch2\\Desktop\\systèmes complexes\\ConsoleApp1\\dijkstra.csproj",
+        "packagesPath": "C:\\Users\\akoch2\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\akoch2\\Desktop\\systèmes complexes\\ConsoleApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\annes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\akoch2\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
