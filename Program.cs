@@ -13,7 +13,7 @@ namespace ConsoleApp1
 			//le graph du cours a été orienté du haut vers le bas
 			Graph graphCoursOriante = new Graph(nbrSommets, new int[nbrSommets,nbrSommets] {	{ inf, 85, 217, inf, 173, inf, inf, inf, inf, inf},
 																				{ inf, inf, inf, inf, inf, 80, inf, inf, inf, inf},
-																				{ inf, inf, inf, inf, inf, inf, 186, inf, inf, inf},
+																				{ inf, inf, inf, inf, inf, inf, 186, 103, inf, inf},
 																				{ inf, inf, inf, inf, inf, inf, inf, inf, inf, inf},
 																				{ inf, inf, inf, inf, inf, inf, inf, inf, inf, 502},
 																				{ inf, inf, inf, inf, inf, inf, inf, inf, 250, inf},
@@ -21,12 +21,16 @@ namespace ConsoleApp1
 																				{ inf, inf, inf, 183, inf, inf, inf, inf, inf, 167},
 																				{ inf, inf, inf, inf, inf, inf, inf, inf, inf, 84},
 																				{ inf, inf, inf, inf, inf, inf, inf, inf, inf, inf}});
-			graphCoursOriante.dijkstra(0, 9);
-			Console.WriteLine("Hello World!");
+			List<int> shortestPath = graphCoursOriante.dijkstra(0, 9);
+            foreach (var item in shortestPath)
+            {
+				Console.WriteLine(item);
+			}
+			
 		}
 	}
 
-
+	
 	class Graph
 	{
 		const int inf = int.MaxValue;
@@ -53,56 +57,51 @@ namespace ConsoleApp1
 			}
 
 			distances[depart] = 0;
-			listSommets.Remove(depart);
-
 			int som = depart;
-			var temp = (0,0);
-			int distdesom, tempsom=0;
+
 			while (listSommets.Count > 0)
 			{
-				temp = distMin(som, listSommets);
-				//som = temp.Item1;
-				distances[temp.Item1] = temp.Item2;
-				Console.WriteLine(som + ", à distance de : "+distances[som]);
+				Console.WriteLine(som);
 				listSommets.Remove(som);
 
-				distdesom = inf;
 				foreach (var b in listSommets)
 				{
 					if (ponderation[som, b] == inf) { continue; } //si ce n'est pas un voisin de som, continuer la boucle
-					Console.WriteLine(b + ", et il est à de 0 : " + distances[b] + " et " + (distances[som] + ponderation[som, b]));
+					Console.WriteLine("le point "+b + " est à une distance de "+depart+" de " + distances[b] + " ou " + (distances[som] + ponderation[som, b]));
 					if (distances[b] > (distances[som] + ponderation[som, b])){
 						distances[b] = distances[som] + ponderation[som, b];
 						predecesseur[b] = som;
 					}
-					if (distances[b] < distdesom) {
-						distdesom = distances[b];
-						tempsom = b;
-					}
 					
 				}
-				som = tempsom;
-				Console.WriteLine("gooooooooooooooooooooooo");
+				int min = inf;
+				int previoussom = som;
+				//quel est le sommet avec le plus court chemin du départ :
+				Console.WriteLine("nombre de sommets non testés : "+listSommets.Count);
+				foreach (var b in listSommets)
+                {
+                    if (distances[b] < min)
+                    {
+						som = b;
+						min = distances[b];
+                    }
+                }
+				if(som == previoussom){break;} //si le nouveau sommet n'a pas changé, c'est que certains points ne sont pas connectés au sommet de départ, l'algo risque alors de boucler à l'infini
+				Console.WriteLine("-------prochain point-------");
 			}
 
-			return new List<int>();
-		}
-
-		//retourne le point le plus proche de "départ" et sa distance
-		private (int,int) distMin(int depart, List<int> listSommets) 
-		{
-			int mini = inf;
-			int s = -1; //sommet
-			foreach (var som in listSommets)
+			//list des sommets du chemin le plus court
+			List<int> shortestPath = new List<int>();
+			int current = arrivee;
+			while (current != depart)
 			{
-				if (ponderation[depart,som]<mini)
-				{
-					mini = ponderation[depart, som];
-					//Console.WriteLine(mini);
-					s = som;
-				}
+				shortestPath.Add(current);
+				current = predecesseur[current];
 			}
-			return (s,mini);
+
+			shortestPath.Reverse();
+
+			return shortestPath;
 		}
 	}
 }
